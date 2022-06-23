@@ -100,6 +100,7 @@ enum PrimitiveFSM
 struct MiltonSettings
 {
     v3f background_color;
+    v3f default_brush_color;
     float peek_out_increment;
 
     MiltonBindings bindings;

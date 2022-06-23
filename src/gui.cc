@@ -809,6 +809,24 @@ milton_imgui_tick(MiltonInput* input, PlatformState* platform,  Milton* milton, 
                     milton->settings->background_color = milton->view->background_color;
                 }
 
+                ImGui::Separator();
+
+                ImGui::Text(loc(TXT_default_brush_color));
+                v3f* brush_color = &milton->settings->default_brush_color;
+                if (ImGui::ColorEdit3(loc(TXT_brush_color), brush_color->d)) {
+                    // TODO: Let milton know that we need to save the settings
+                }
+                if ( ImGui::Button(loc(TXT_set_current_brush_color_as_default)) ) {
+                    milton->settings->default_brush_color = {
+                        milton->brushes[BrushEnum_PEN].color.r,
+                        milton->brushes[BrushEnum_PEN].color.g,
+                        milton->brushes[BrushEnum_PEN].color.b
+                    };
+                }
+
+                ImGui::Separator();
+
+
                 const float peek_range = 20;
                 int peek_out_percent = 100 * (milton->settings->peek_out_increment / peek_range);
                 if (ImGui::SliderInt(loc(TXT_peek_out_increment_percent), &peek_out_percent, 0, 100)) {

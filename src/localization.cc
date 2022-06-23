@@ -48,6 +48,8 @@ init_localization()
         EN(TXT_switch_to_primitive_grid, "Grid");
         EN(TXT_choose_background_color, "Choose background color");
         EN(TXT_color, "Color");
+        EN(TXT_set_current_brush_color_as_default, "Set current pen color as default");
+        EN(TXT_brush_color, "Brush Color");
         EN(TXT_export_DOTS, "Export...");
         EN(TXT_MSG_click_and_drag_instruction, "Click and drag to select the area to export.");
         EN(TXT_current_selection, "Current selection");
@@ -95,6 +97,7 @@ init_localization()
         EN(TXT_transparent_background, "Transparent background");
         EN(TXT_settings, "Settings");
         EN(TXT_default_background_color, "Default background color for new canvas:");
+        EN(TXT_default_brush_color, "Default brush color for new canvas:");
         EN(TXT_set_current_background_color_as_default, "Set current background color as default");
         EN(TXT_background_color, "Background color");
         EN(TXT_background_COLON, "Background:");

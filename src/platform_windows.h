@@ -8,11 +8,14 @@
 #define getpid _getpid
 #define platform_milton_log win32_log
 #define platform_milton_log_args win32_log_args
-void win32_log(char *format, ...);
-void win32_log_args(char *format, va_list args);
+
 
 extern "C"
 {
+
+void win32_log(char *format, ...);
+void win32_log_args(char *format, va_list args);
+
 
     // -------------------------------  SHlObj.h
 #define CSIDL_DESKTOP                   0x0000        // <desktop>

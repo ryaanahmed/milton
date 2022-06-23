@@ -837,6 +837,7 @@ milton_reset_canvas_and_set_default(Milton* milton)
     milton->view->background_color = milton->settings->background_color;
     gpu_update_background(milton->renderer, milton->view->background_color);
 
+
     // Reset color buttons
     for ( ColorButton* b = milton->gui->picker.color_buttons; b!=NULL; b=b->next ) {
         b->rgba = {};
@@ -856,6 +857,7 @@ milton_reset_canvas_and_set_default(Milton* milton)
         exporter_init(&gui->exporter);
     }
 
+    gui_picker_from_rgb(&milton->gui->picker, milton->settings->default_brush_color);
     milton_update_brushes(milton);
 
     milton_set_default_canvas_file(milton);
