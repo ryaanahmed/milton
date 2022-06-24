@@ -157,6 +157,11 @@ init_localization()
         EN(TXT_Action_SET_BRUSH_ALPHA_80, "Set alpha to 80%");
         EN(TXT_Action_SET_BRUSH_ALPHA_90, "Set alpha to 90%");
         EN(TXT_Action_SET_BRUSH_ALPHA_100, "Set alpha to 100%");
+        EN(TXT_Action_SET_BRUSH_COLOR_0, "Switch to default color 1");
+        EN(TXT_Action_SET_BRUSH_COLOR_1, "Switch to default color 2");
+        EN(TXT_Action_SET_BRUSH_COLOR_2, "Switch to default color 3");
+        EN(TXT_Action_SET_BRUSH_COLOR_3, "Switch to default color 4");
+        EN(TXT_Action_SET_BRUSH_COLOR_4, "Switch to default color 5");
         EN(TXT_Action_HELP, "Help");
         EN(TXT_Action_PEEK_OUT, "Peek out");
         EN(TXT_Action_DRAG_BRUSH_SIZE, "Drag to change brush size");

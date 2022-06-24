@@ -812,17 +812,11 @@ milton_imgui_tick(MiltonInput* input, PlatformState* platform,  Milton* milton, 
 
                 // Set color button defaults
                 ImGui::Text(loc(TXT_set_button_colors));
-                const enum Texts ButtonTexts[] = {
-                    TXT_set_button_color_0,
-                    TXT_set_button_color_1,
-                    TXT_set_button_color_2,
-                    TXT_set_button_color_3,
-                    TXT_set_button_color_4
-                };
                 i32 num_buttons = NUM_COLOR_BUTTONS;
-                for ( i32 i = 0; i != (num_buttons - 1); ++i ) {
+                for ( i32 i = 0; i < num_buttons; ++i ) {
                     v3f* brush_color = &milton->settings->default_button_colors[i];
-                    if (ImGui::ColorEdit3(loc(ButtonTexts[i]), brush_color->d)) {
+                    char* button_str = (char*)loc((Texts)(TXT_set_button_color_0 + (int)i));
+                    if (ImGui::ColorEdit3(button_str, brush_color->d)) {
                         // TODO: Let milton know that we need to save the settings
                     }
                 }

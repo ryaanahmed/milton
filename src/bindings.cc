@@ -75,16 +75,22 @@ set_default_bindings(MiltonBindings* bs)
     binding(bs, Modifier_NONE, Binding::F1, Action_HELP);
     binding(bs, Modifier_NONE, Binding::TAB, Action_TOGGLE_GUI);
 
-    binding(bs, Modifier_NONE, '1', Action_SET_BRUSH_ALPHA_10);
-    binding(bs, Modifier_NONE, '2', Action_SET_BRUSH_ALPHA_20);
-    binding(bs, Modifier_NONE, '3', Action_SET_BRUSH_ALPHA_30);
-    binding(bs, Modifier_NONE, '4', Action_SET_BRUSH_ALPHA_40);
-    binding(bs, Modifier_NONE, '5', Action_SET_BRUSH_ALPHA_50);
-    binding(bs, Modifier_NONE, '6', Action_SET_BRUSH_ALPHA_60);
-    binding(bs, Modifier_NONE, '7', Action_SET_BRUSH_ALPHA_70);
-    binding(bs, Modifier_NONE, '8', Action_SET_BRUSH_ALPHA_80);
-    binding(bs, Modifier_NONE, '9', Action_SET_BRUSH_ALPHA_90);
-    binding(bs, Modifier_NONE, '0', Action_SET_BRUSH_ALPHA_100);
+    binding(bs, Modifier_CTRL, '1', Action_SET_BRUSH_ALPHA_10);
+    binding(bs, Modifier_CTRL, '2', Action_SET_BRUSH_ALPHA_20);
+    binding(bs, Modifier_CTRL, '3', Action_SET_BRUSH_ALPHA_30);
+    binding(bs, Modifier_CTRL, '4', Action_SET_BRUSH_ALPHA_40);
+    binding(bs, Modifier_CTRL, '5', Action_SET_BRUSH_ALPHA_50);
+    binding(bs, Modifier_CTRL, '6', Action_SET_BRUSH_ALPHA_60);
+    binding(bs, Modifier_CTRL, '7', Action_SET_BRUSH_ALPHA_70);
+    binding(bs, Modifier_CTRL, '8', Action_SET_BRUSH_ALPHA_80);
+    binding(bs, Modifier_CTRL, '9', Action_SET_BRUSH_ALPHA_90);
+    binding(bs, Modifier_CTRL, '0', Action_SET_BRUSH_ALPHA_100);
+
+    binding(bs, Modifier_NONE, '1', Action_SET_BRUSH_COLOR_0);
+    binding(bs, Modifier_NONE, '2', Action_SET_BRUSH_COLOR_1);
+    binding(bs, Modifier_NONE, '3', Action_SET_BRUSH_COLOR_2);
+    binding(bs, Modifier_NONE, '4', Action_SET_BRUSH_COLOR_3);
+    binding(bs, Modifier_NONE, '5', Action_SET_BRUSH_COLOR_4);
 
     binding_with_release(bs, Modifier_NONE, '`', Action_PEEK_OUT, ActionRelease_PEEK_OUT);
     binding_with_release(bs, Modifier_SHIFT, Binding::UNBOUND, Action_DRAG_BRUSH_SIZE, ActionRelease_DRAG_BRUSH_SIZE);
@@ -252,6 +258,21 @@ binding_dispatch_action(BindableAction a, MiltonInput* input, Milton* milton, v2
         } break;
         case Action_SET_BRUSH_ALPHA_100: {
             milton_set_brush_alpha(milton, 1.0);
+        } break;
+        case Action_SET_BRUSH_COLOR_0: {
+            milton_set_brush_color(milton, milton->settings->default_button_colors[0]);
+        } break;
+        case Action_SET_BRUSH_COLOR_1: {
+            milton_set_brush_color(milton, milton->settings->default_button_colors[1]);
+        } break;
+        case Action_SET_BRUSH_COLOR_2: {
+            milton_set_brush_color(milton, milton->settings->default_button_colors[2]);
+        } break;
+        case Action_SET_BRUSH_COLOR_3: {
+            milton_set_brush_color(milton, milton->settings->default_button_colors[3]);
+        } break;
+        case Action_SET_BRUSH_COLOR_4: {
+            milton_set_brush_color(milton, milton->settings->default_button_colors[4]);
         } break;
         case Action_HELP: {
             gui_toggle_help(milton->gui);

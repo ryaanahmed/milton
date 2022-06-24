@@ -600,6 +600,16 @@ milton_set_brush_alpha(Milton* milton, float alpha)
     milton_update_brushes(milton);
 }
 
+void
+milton_set_brush_color(Milton* milton, v3f rgb)
+{
+    gui_picker_from_rgb(&milton->gui->picker, rgb);
+    milton_update_brushes(milton);
+    gui_mark_color_used(milton->gui);
+    gpu_update_picker(milton->renderer, &milton->gui->picker);
+}
+
+
 float
 milton_get_brush_alpha(Milton const* milton)
 {
@@ -616,7 +626,7 @@ settings_init(MiltonSettings* s)
     s->default_button_colors[1] = v3f{1,0,0};
     s->default_button_colors[2] = v3f{0,1,0};
     s->default_button_colors[3] = v3f{0,0,1};
-    s->default_button_colors[4] = v3f{0,1,1};
+    s->default_button_colors[4] = v3f{1,1,0};
     s->peek_out_increment = DEFAULT_PEEK_OUT_INCREMENT_LOG;
 }
 
