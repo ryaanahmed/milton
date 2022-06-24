@@ -612,6 +612,11 @@ void
 settings_init(MiltonSettings* s)
 {
     s->background_color = v3f{1,1,1};
+    s->default_button_colors[0] = v3f{0,0,0};
+    s->default_button_colors[1] = v3f{1,0,0};
+    s->default_button_colors[2] = v3f{0,1,0};
+    s->default_button_colors[3] = v3f{0,0,1};
+    s->default_button_colors[4] = v3f{0,1,1};
     s->peek_out_increment = DEFAULT_PEEK_OUT_INCREMENT_LOG;
 }
 
@@ -839,8 +844,10 @@ milton_reset_canvas_and_set_default(Milton* milton)
 
 
     // Reset color buttons
-    for ( ColorButton* b = milton->gui->picker.color_buttons; b!=NULL; b=b->next ) {
-        b->rgba = {};
+    i32 button_idx = 0;
+    for (ColorButton* b = milton->gui->picker.color_buttons; b!=NULL; b=b->next) {
+        b->rgba = color_rgb_to_rgba(milton->settings->default_button_colors[button_idx], 1);
+        ++button_idx;
     }
 
     // gui init
@@ -857,7 +864,7 @@ milton_reset_canvas_and_set_default(Milton* milton)
         exporter_init(&gui->exporter);
     }
 
-    gui_picker_from_rgb(&milton->gui->picker, milton->settings->default_brush_color);
+    gui_picker_from_rgb(&milton->gui->picker, milton->settings->default_button_colors[0]);
     milton_update_brushes(milton);
 
     milton_set_default_canvas_file(milton);

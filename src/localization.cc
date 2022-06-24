@@ -120,6 +120,12 @@ init_localization()
         EN(TXT_size_relative_to_canvas, "Size relative to canvas");
         EN(TXT_grid_columns, "Grid Columns");
         EN(TXT_grid_rows, "Grid Rows");
+        EN(TXT_set_button_colors, "Set default color buttons");
+        EN(TXT_set_button_color_0, "Color 1");
+        EN(TXT_set_button_color_1, "Color 2");
+        EN(TXT_set_button_color_2, "Color 3");
+        EN(TXT_set_button_color_3, "Color 4");
+        EN(TXT_set_button_color_4, "Color 5");
 
         EN(TXT_Action_DECREASE_BRUSH_SIZE, "Decrease brush size");
         EN(TXT_Action_INCREASE_BRUSH_SIZE, "Increase brush size");

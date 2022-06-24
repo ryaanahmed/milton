@@ -103,6 +103,12 @@ enum Texts
     TXT_size_relative_to_canvas,
     TXT_grid_columns,
     TXT_grid_rows,
+    TXT_set_button_colors,
+    TXT_set_button_color_0,
+    TXT_set_button_color_1,
+    TXT_set_button_color_2,
+    TXT_set_button_color_3,
+    TXT_set_button_color_4,
 
     // Actions
     TXT_Action_FIRST,

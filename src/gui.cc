@@ -12,7 +12,6 @@
 #include "platform.h"
 
 
-#define NUM_BUTTONS 5
 #define BOUNDS_RADIUS_PX 80
 
 // If reset_gui is true, the default window position and size will be set.
@@ -811,17 +810,21 @@ milton_imgui_tick(MiltonInput* input, PlatformState* platform,  Milton* milton, 
 
                 ImGui::Separator();
 
-                ImGui::Text(loc(TXT_default_brush_color));
-                v3f* brush_color = &milton->settings->default_brush_color;
-                if (ImGui::ColorEdit3(loc(TXT_brush_color), brush_color->d)) {
-                    // TODO: Let milton know that we need to save the settings
-                }
-                if ( ImGui::Button(loc(TXT_set_current_brush_color_as_default)) ) {
-                    milton->settings->default_brush_color = {
-                        milton->brushes[BrushEnum_PEN].color.r,
-                        milton->brushes[BrushEnum_PEN].color.g,
-                        milton->brushes[BrushEnum_PEN].color.b
-                    };
+                // Set color button defaults
+                ImGui::Text(loc(TXT_set_button_colors));
+                const enum Texts ButtonTexts[] = {
+                    TXT_set_button_color_0,
+                    TXT_set_button_color_1,
+                    TXT_set_button_color_2,
+                    TXT_set_button_color_3,
+                    TXT_set_button_color_4
+                };
+                i32 num_buttons = NUM_COLOR_BUTTONS;
+                for ( i32 i = 0; i != (num_buttons - 1); ++i ) {
+                    v3f* brush_color = &milton->settings->default_button_colors[i];
+                    if (ImGui::ColorEdit3(loc(ButtonTexts[i]), brush_color->d)) {
+                        // TODO: Let milton know that we need to save the settings
+                    }
                 }
 
                 ImGui::Separator();
@@ -1225,7 +1228,7 @@ update_button_bounds(ColorPicker* picker, f32 ui_scale)
     i32 bounds_radius_px = ui_scale*BOUNDS_RADIUS_PX;
 
     i32 spacing = 4*ui_scale;
-    i32 num_buttons = NUM_BUTTONS;
+    i32 num_buttons = NUM_COLOR_BUTTONS;
 
     i32 button_size = (2*bounds_radius_px - (num_buttons - 1) * spacing) / num_buttons;
     i32 current_x = ui_scale*40 - button_size / 2;
@@ -1544,7 +1547,7 @@ gui_init(Arena* root_arena, MiltonGui* gui, f32 ui_scale)
 
     picker_init(&gui->picker);
 
-    i32 num_buttons = NUM_BUTTONS;
+    i32 num_buttons = NUM_COLOR_BUTTONS;
     auto* cur_button = gui->picker.color_buttons;
     for ( i64 i = 0; i != (num_buttons - 1); ++i ) {
         cur_button->next = arena_alloc_elem(root_arena, ColorButton);

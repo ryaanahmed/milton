@@ -17,6 +17,7 @@
 #define MILTON_MAX_BRUSH_SIZE       300
 #define HOVER_FLASH_THRESHOLD_MS    500  // How long does the hidden brush hover show when it has changed size.
 #define MODE_STACK_MAX 64
+#define NUM_COLOR_BUTTONS 5
 
 struct MiltonGLState
 {
@@ -100,7 +101,7 @@ enum PrimitiveFSM
 struct MiltonSettings
 {
     v3f background_color;
-    v3f default_brush_color;
+    v3f default_button_colors[NUM_COLOR_BUTTONS];
     float peek_out_increment;
 
     MiltonBindings bindings;
